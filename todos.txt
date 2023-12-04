@@ -1,0 +1,51 @@
+GHOSTBUSTERS - TRACKER
+
+TODO's
+	[x] Fix navigation on the main map screen
+	[x] Don't let players "re-select" the same car again in the shop screen
+	[x] Fix roamer catching mechanic while driving
+	[x] Fix rendering issues with cars that are not the Hearse ('roamer under fender' bug)
+	[x] Show game-over screen, including updated account info if player has won
+	[x] Add pressing spacebar to show status message
+	[x] Add building pre-highlight when PK Energy meter is installed
+	[x] Add marshmallow building destruction game feature (including marshmallow sensor)
+	[x] Change marshmallow algorithm to use offsets instead of exact pk energy levels
+	[x] Add Zuul outro animation
+	[x] Improve ghost/beam collission detection
+	[x] Add sound effects
+	[x] Fix music playback stuttering while loading graphics assets
+	[x] Change car image depending on if the vacuum is installed or not
+	[x] Add karaoke intro animations
+	[ ] Complete Geneve port
+
+BUGS:
+	[x] Vacuum sound effect is broken
+	[x] BUG: pre-haunted buildings can become empty without passing through the haunted 
+	    state sometimes
+	[x] Bug in pre-haunt algorithm not entirely fixed: pre-haunts can expire without 
+	    going through the full haunting stage, even when staring at them on the map
+	[x] Crossing the streams messes up the battery level. It goes to 99%????
+	[x] suck_counter doesn't always reset properly?
+	[x] Sometimes the account number shows too many zeroes
+	[x] Karaoke system does not reset when game restarts
+	[x] PK energy counter speed does not reset when game restarts?
+	[x] BRRRR sound effect is broken (shop), BLIP sound effect doesn't sound great 
+	    on terminal screens
+	[x] Go-to-zuul animation on map screen when reaching 9999 pk shouldn't play when 
+	    you don't have enough money to battle stay puft
+	[x] Can't type an account name upon restart after winning the game?
+	[x] Marshmallow 'aggregation' sometimes wraps around the screen
+	[x] CS1: Sound fx 'hang' when transitioning screens -> TODO: add "2010" modifier to all bass notes in themesong.dfm
+	[x] CS1: Karaoke lines messed up after restarting the game
+	[x] OX.: Music speeds up between screens
+	[x] Short flicker of garbage sprites when arriving at buildings
+	[?] CS1: Ghostbusters didn't leave building after missing a ghost, stuck there until the next ghost showed up
+	[?] JasonACT: Managed to leave shop without buying traps
+
+NICE TO HAVE's
+	[x] TheMole games logo intro
+	[o] Add missing animations on catching screen (no ghost, leave with trap, etc...)
+	[x] Introduce different sprites for ghosts for visual variety
+	[ ] Erase "SEDGEWICK HOTEL" banner when not at building number 7
+	[ ] Add keymaster and gatekeeper to map screen
+

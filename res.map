@@ -1,0 +1,452 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.binary         0x0000000000000000    0x3c8ad load address 0x0000000000006000
+ resources/*.o(.data)
+ .data          0x0000000000000000     0x1800 resources/account_colors.o
+                0x0000000000001800                _binary_resources_account_colors_dat_end
+                0x0000000000000000                _binary_resources_account_colors_dat_start
+ .data          0x0000000000001800     0x1800 resources/account_patterns.o
+                0x0000000000003000                _binary_resources_account_patterns_dat_end
+                0x0000000000001800                _binary_resources_account_patterns_dat_start
+ .data          0x0000000000003000       0xb0 resources/account_sprite_patterns.o
+                0x0000000000003000                _binary_resources_account_sprite_patterns_dat_start
+                0x00000000000030b0                _binary_resources_account_sprite_patterns_dat_end
+ .data          0x00000000000030b0       0x18 resources/account_sprites.o
+                0x00000000000030c8                _binary_resources_account_sprites_dat_end
+                0x00000000000030b0                _binary_resources_account_sprites_dat_start
+ .data          0x00000000000030c8      0x2c0 resources/account_text.o
+                0x00000000000030c8                _binary_resources_account_text_dat_start
+                0x0000000000003388                _binary_resources_account_text_dat_end
+ .data          0x0000000000003388       0x10 resources/beetle_colors.o
+                0x0000000000003398                _binary_resources_beetle_colors_dat_end
+                0x0000000000003388                _binary_resources_beetle_colors_dat_start
+ .data          0x0000000000003398      0x600 resources/beetle_nametable.o
+                0x0000000000003398                _binary_resources_beetle_nametable_dat_start
+                0x0000000000003998                _binary_resources_beetle_nametable_dat_end
+ .data          0x0000000000003998      0x400 resources/beetle_patt0.o
+                0x0000000000003998                _binary_resources_beetle_patt0_dat_start
+                0x0000000000003d98                _binary_resources_beetle_patt0_dat_end
+ .data          0x0000000000003d98      0x400 resources/beetle_patt1.o
+                0x0000000000004198                _binary_resources_beetle_patt1_dat_end
+                0x0000000000003d98                _binary_resources_beetle_patt1_dat_start
+ .data          0x0000000000004198      0x400 resources/beetle_patt2.o
+                0x0000000000004198                _binary_resources_beetle_patt2_dat_start
+                0x0000000000004598                _binary_resources_beetle_patt2_dat_end
+ .data          0x0000000000004598      0x400 resources/beetle_patt3.o
+                0x0000000000004598                _binary_resources_beetle_patt3_dat_start
+                0x0000000000004998                _binary_resources_beetle_patt3_dat_end
+ .data          0x0000000000004998      0x400 resources/beetle_patt4.o
+                0x0000000000004d98                _binary_resources_beetle_patt4_dat_end
+                0x0000000000004998                _binary_resources_beetle_patt4_dat_start
+ .data          0x0000000000004d98      0x400 resources/beetle_patt5.o
+                0x0000000000005198                _binary_resources_beetle_patt5_dat_end
+                0x0000000000004d98                _binary_resources_beetle_patt5_dat_start
+ .data          0x0000000000005198      0x400 resources/beetle_patt6.o
+                0x0000000000005198                _binary_resources_beetle_patt6_dat_start
+                0x0000000000005598                _binary_resources_beetle_patt6_dat_end
+ .data          0x0000000000005598      0x400 resources/beetle_patt7.o
+                0x0000000000005998                _binary_resources_beetle_patt7_dat_end
+                0x0000000000005598                _binary_resources_beetle_patt7_dat_start
+ .data          0x0000000000005998       0x20 resources/beetle_shop_colors.o
+                0x0000000000005998                _binary_resources_beetle_shop_colors_dat_start
+                0x00000000000059b8                _binary_resources_beetle_shop_colors_dat_end
+ .data          0x00000000000059b8       0xd8 resources/beetle_shop_nametable.o
+                0x0000000000005a90                _binary_resources_beetle_shop_nametable_dat_end
+                0x00000000000059b8                _binary_resources_beetle_shop_nametable_dat_start
+ .data          0x0000000000005a90      0x380 resources/beetle_shop_patterns.o
+                0x0000000000005a90                _binary_resources_beetle_shop_patterns_dat_start
+                0x0000000000005e10                _binary_resources_beetle_shop_patterns_dat_end
+ .data          0x0000000000005e10      0x2e0 resources/beetle_sprites.o
+                0x00000000000060f0                _binary_resources_beetle_sprites_dat_end
+                0x0000000000005e10                _binary_resources_beetle_sprites_dat_start
+ .data          0x00000000000060f0     0x1800 resources/boss_battle_colors.o
+                0x00000000000060f0                _binary_resources_boss_battle_colors_dat_start
+                0x00000000000078f0                _binary_resources_boss_battle_colors_dat_end
+ .data          0x00000000000078f0     0x1800 resources/boss_battle_patterns.o
+                0x00000000000090f0                _binary_resources_boss_battle_patterns_dat_end
+                0x00000000000078f0                _binary_resources_boss_battle_patterns_dat_start
+ .data          0x00000000000090f0     0x1800 resources/brooklyn_bldg_colors.o
+                0x000000000000a8f0                _binary_resources_brooklyn_bldg_colors_dat_end
+                0x00000000000090f0                _binary_resources_brooklyn_bldg_colors_dat_start
+ .data          0x000000000000a8f0     0x1800 resources/brooklyn_bldg_patterns.o
+                0x000000000000a8f0                _binary_resources_brooklyn_bldg_patterns_dat_start
+                0x000000000000c0f0                _binary_resources_brooklyn_bldg_patterns_dat_end
+ .data          0x000000000000c0f0       0x10 resources/drive_colors.o
+                0x000000000000c0f0                _binary_resources_drive_colors_dat_start
+                0x000000000000c100                _binary_resources_drive_colors_dat_end
+ .data          0x000000000000c100      0x600 resources/drive_nametable.o
+                0x000000000000c700                _binary_resources_drive_nametable_dat_end
+                0x000000000000c100                _binary_resources_drive_nametable_dat_start
+ .data          0x000000000000c700      0x400 resources/drive_patt0.o
+                0x000000000000c700                _binary_resources_drive_patt0_dat_start
+                0x000000000000cb00                _binary_resources_drive_patt0_dat_end
+ .data          0x000000000000cb00      0x400 resources/drive_patt1.o
+                0x000000000000cb00                _binary_resources_drive_patt1_dat_start
+                0x000000000000cf00                _binary_resources_drive_patt1_dat_end
+ .data          0x000000000000cf00      0x400 resources/drive_patt2.o
+                0x000000000000d300                _binary_resources_drive_patt2_dat_end
+                0x000000000000cf00                _binary_resources_drive_patt2_dat_start
+ .data          0x000000000000d300      0x400 resources/drive_patt3.o
+                0x000000000000d300                _binary_resources_drive_patt3_dat_start
+                0x000000000000d700                _binary_resources_drive_patt3_dat_end
+ .data          0x000000000000d700      0x400 resources/drive_patt4.o
+                0x000000000000d700                _binary_resources_drive_patt4_dat_start
+                0x000000000000db00                _binary_resources_drive_patt4_dat_end
+ .data          0x000000000000db00      0x400 resources/drive_patt5.o
+                0x000000000000df00                _binary_resources_drive_patt5_dat_end
+                0x000000000000db00                _binary_resources_drive_patt5_dat_start
+ .data          0x000000000000df00      0x400 resources/drive_patt6.o
+                0x000000000000df00                _binary_resources_drive_patt6_dat_start
+                0x000000000000e300                _binary_resources_drive_patt6_dat_end
+ .data          0x000000000000e300      0x400 resources/drive_patt7.o
+                0x000000000000e700                _binary_resources_drive_patt7_dat_end
+                0x000000000000e300                _binary_resources_drive_patt7_dat_start
+ .data          0x000000000000e700      0x2e0 resources/drive_sprites.o
+                0x000000000000e9e0                _binary_resources_drive_sprites_dat_end
+                0x000000000000e700                _binary_resources_drive_sprites_dat_start
+ .data          0x000000000000e9e0      0x2f8 resources/font.o
+                0x000000000000ecd8                _binary_resources_font_dat_end
+                0x000000000000e9e0                _binary_resources_font_dat_start
+ .data          0x000000000000ecd8      0x3ba resources/fx.o
+                0x000000000000f092                _binary_resources_fx_dat_end
+                0x000000000000ecd8                _binary_resources_fx_dat_start
+ .data          0x000000000000f092     0x1800 resources/gbhq_bldg_colors.o
+                0x000000000000f092                _binary_resources_gbhq_bldg_colors_dat_start
+                0x0000000000010892                _binary_resources_gbhq_bldg_colors_dat_end
+ .data          0x0000000000010892     0x1800 resources/gbhq_bldg_patterns.o
+                0x0000000000010892                _binary_resources_gbhq_bldg_patterns_dat_start
+                0x0000000000012092                _binary_resources_gbhq_bldg_patterns_dat_end
+ .data          0x0000000000012092       0x80 resources/glowing_skull_sprites.o
+                0x0000000000012092                _binary_resources_glowing_skull_sprites_dat_start
+                0x0000000000012112                _binary_resources_glowing_skull_sprites_dat_end
+ .data          0x0000000000012112       0x20 resources/hearse_shop_colors.o
+                0x0000000000012112                _binary_resources_hearse_shop_colors_dat_start
+                0x0000000000012132                _binary_resources_hearse_shop_colors_dat_end
+ .data          0x0000000000012132       0xd8 resources/hearse_shop_nametable.o
+                0x000000000001220a                _binary_resources_hearse_shop_nametable_dat_end
+                0x0000000000012132                _binary_resources_hearse_shop_nametable_dat_start
+ .data          0x000000000001220a      0x300 resources/hearse_shop_patterns.o
+                0x000000000001250a                _binary_resources_hearse_shop_patterns_dat_end
+                0x000000000001220a                _binary_resources_hearse_shop_patterns_dat_start
+ .data          0x000000000001250a     0x1800 resources/house_bldg_colors.o
+                0x0000000000013d0a                _binary_resources_house_bldg_colors_dat_end
+                0x000000000001250a                _binary_resources_house_bldg_colors_dat_start
+ .data          0x0000000000013d0a     0x1800 resources/house_bldg_patterns.o
+                0x0000000000013d0a                _binary_resources_house_bldg_patterns_dat_start
+                0x000000000001550a                _binary_resources_house_bldg_patterns_dat_end
+ .data          0x000000000001550a       0xa6 resources/introscroll.o
+                0x000000000001550a                _binary_resources_introscroll_dat_start
+                0x00000000000155b0                _binary_resources_introscroll_dat_end
+ .data          0x00000000000155b0       0x20 resources/logo_colors.o
+                0x00000000000155b0                _binary_resources_logo_colors_dat_start
+                0x00000000000155d0                _binary_resources_logo_colors_dat_end
+ .data          0x00000000000155d0      0x2f2 resources/logo_music.o
+                0x00000000000155d0                _binary_resources_logo_music_dat_start
+                0x00000000000158c2                _binary_resources_logo_music_dat_end
+ .data          0x00000000000158c2      0x300 resources/logo_nametable00.o
+                0x0000000000015bc2                _binary_resources_logo_nametable00_dat_end
+                0x00000000000158c2                _binary_resources_logo_nametable00_dat_start
+ .data          0x0000000000015bc2      0x140 resources/logo_patterns.o
+                0x0000000000015d02                _binary_resources_logo_patterns_dat_end
+                0x0000000000015bc2                _binary_resources_logo_patterns_dat_start
+ .data          0x0000000000015d02       0xc1 resources/lost.o
+                0x0000000000015dc3                _binary_resources_lost_dat_end
+                0x0000000000015d02                _binary_resources_lost_dat_start
+ .data          0x0000000000015dc3      0x59d resources/lyrics.o
+                0x0000000000015dc3                _binary_resources_lyrics_dat_start
+                0x0000000000016360                _binary_resources_lyrics_dat_end
+ .data          0x0000000000016360      0x6b0 resources/main_sprites.o
+                0x0000000000016360                _binary_resources_main_sprites_dat_start
+                0x0000000000016a10                _binary_resources_main_sprites_dat_end
+ .data          0x0000000000016a10      0x5ce resources/maintheme.o
+                0x0000000000016fde                _binary_resources_maintheme_dat_end
+                0x0000000000016a10                _binary_resources_maintheme_dat_start
+ .data          0x0000000000016fde     0x1800 resources/map_colors.o
+                0x0000000000016fde                _binary_resources_map_colors_dat_start
+                0x00000000000187de                _binary_resources_map_colors_dat_end
+ .data          0x00000000000187de      0x800 resources/map_nw_colors.o
+                0x0000000000018fde                _binary_resources_map_nw_colors_dat_end
+                0x00000000000187de                _binary_resources_map_nw_colors_dat_start
+ .data          0x0000000000018fde      0x580 resources/map_nw_nametable00.o
+                0x000000000001955e                _binary_resources_map_nw_nametable00_dat_end
+                0x0000000000018fde                _binary_resources_map_nw_nametable00_dat_start
+ .data          0x000000000001955e      0x39d resources/map_nw_nametable01.o
+                0x00000000000198fb                _binary_resources_map_nw_nametable01_dat_end
+                0x000000000001955e                _binary_resources_map_nw_nametable01_dat_start
+ .data          0x00000000000198fb      0x800 resources/map_nw_patterns.o
+                0x00000000000198fb                _binary_resources_map_nw_patterns_dat_start
+                0x000000000001a0fb                _binary_resources_map_nw_patterns_dat_end
+ .data          0x000000000001a0fb     0x1800 resources/map_patterns.o
+                0x000000000001b8fb                _binary_resources_map_patterns_dat_end
+                0x000000000001a0fb                _binary_resources_map_patterns_dat_start
+ .data          0x000000000001b8fb     0x1800 resources/office_bldg_colors.o
+                0x000000000001d0fb                _binary_resources_office_bldg_colors_dat_end
+                0x000000000001b8fb                _binary_resources_office_bldg_colors_dat_start
+ .data          0x000000000001d0fb     0x1800 resources/office_bldg_patterns.o
+                0x000000000001d0fb                _binary_resources_office_bldg_patterns_dat_start
+                0x000000000001e8fb                _binary_resources_office_bldg_patterns_dat_end
+ .data          0x000000000001e8fb     0x1800 resources/scrollfont_patterns.o
+                0x00000000000200fb                _binary_resources_scrollfont_patterns_dat_end
+                0x000000000001e8fb                _binary_resources_scrollfont_patterns_dat_start
+ .data          0x00000000000200fb     0x1800 resources/sedgewick_bldg_colors.o
+                0x00000000000218fb                _binary_resources_sedgewick_bldg_colors_dat_end
+                0x00000000000200fb                _binary_resources_sedgewick_bldg_colors_dat_start
+ .data          0x00000000000218fb     0x1800 resources/sedgewick_bldg_patterns.o
+                0x00000000000230fb                _binary_resources_sedgewick_bldg_patterns_dat_end
+                0x00000000000218fb                _binary_resources_sedgewick_bldg_patterns_dat_start
+ .data          0x00000000000230fb      0x200 resources/shop_font_patterns.o
+                0x00000000000232fb                _binary_resources_shop_font_patterns_dat_end
+                0x00000000000230fb                _binary_resources_shop_font_patterns_dat_start
+ .data          0x00000000000232fb      0x2c0 resources/shop_sprite_patterns.o
+                0x00000000000232fb                _binary_resources_shop_sprite_patterns_dat_start
+                0x00000000000235bb                _binary_resources_shop_sprite_patterns_dat_end
+ .data          0x00000000000235bb     0x4737 resources/shout.o
+                0x0000000000027cf2                _binary_resources_shout_dat_end
+                0x00000000000235bb                _binary_resources_shout_dat_start
+ .data          0x0000000000027cf2       0x80 resources/skull_sprites.o
+                0x0000000000027d72                _binary_resources_skull_sprites_dat_end
+                0x0000000000027cf2                _binary_resources_skull_sprites_dat_start
+ .data          0x0000000000027d72     0x3da0 resources/slimed.o
+                0x0000000000027d72                _binary_resources_slimed_dat_start
+                0x000000000002bb12                _binary_resources_slimed_dat_end
+ .data          0x000000000002bb12        0xf resources/sportscar_colors.o
+                0x000000000002bb21                _binary_resources_sportscar_colors_dat_end
+                0x000000000002bb12                _binary_resources_sportscar_colors_dat_start
+ .data          0x000000000002bb21      0x600 resources/sportscar_nametable.o
+                0x000000000002c121                _binary_resources_sportscar_nametable_dat_end
+                0x000000000002bb21                _binary_resources_sportscar_nametable_dat_start
+ .data          0x000000000002c121      0x400 resources/sportscar_patt0.o
+                0x000000000002c121                _binary_resources_sportscar_patt0_dat_start
+                0x000000000002c521                _binary_resources_sportscar_patt0_dat_end
+ .data          0x000000000002c521      0x400 resources/sportscar_patt1.o
+                0x000000000002c521                _binary_resources_sportscar_patt1_dat_start
+                0x000000000002c921                _binary_resources_sportscar_patt1_dat_end
+ .data          0x000000000002c921      0x400 resources/sportscar_patt2.o
+                0x000000000002c921                _binary_resources_sportscar_patt2_dat_start
+                0x000000000002cd21                _binary_resources_sportscar_patt2_dat_end
+ .data          0x000000000002cd21      0x400 resources/sportscar_patt3.o
+                0x000000000002cd21                _binary_resources_sportscar_patt3_dat_start
+                0x000000000002d121                _binary_resources_sportscar_patt3_dat_end
+ .data          0x000000000002d121      0x400 resources/sportscar_patt4.o
+                0x000000000002d121                _binary_resources_sportscar_patt4_dat_start
+                0x000000000002d521                _binary_resources_sportscar_patt4_dat_end
+ .data          0x000000000002d521      0x400 resources/sportscar_patt5.o
+                0x000000000002d921                _binary_resources_sportscar_patt5_dat_end
+                0x000000000002d521                _binary_resources_sportscar_patt5_dat_start
+ .data          0x000000000002d921      0x400 resources/sportscar_patt6.o
+                0x000000000002dd21                _binary_resources_sportscar_patt6_dat_end
+                0x000000000002d921                _binary_resources_sportscar_patt6_dat_start
+ .data          0x000000000002dd21      0x400 resources/sportscar_patt7.o
+                0x000000000002e121                _binary_resources_sportscar_patt7_dat_end
+                0x000000000002dd21                _binary_resources_sportscar_patt7_dat_start
+ .data          0x000000000002e121       0x20 resources/sportscar_shop_colors.o
+                0x000000000002e141                _binary_resources_sportscar_shop_colors_dat_end
+                0x000000000002e121                _binary_resources_sportscar_shop_colors_dat_start
+ .data          0x000000000002e141       0xd8 resources/sportscar_shop_nametable.o
+                0x000000000002e219                _binary_resources_sportscar_shop_nametable_dat_end
+                0x000000000002e141                _binary_resources_sportscar_shop_nametable_dat_start
+ .data          0x000000000002e219      0x2c0 resources/sportscar_shop_patterns.o
+                0x000000000002e4d9                _binary_resources_sportscar_shop_patterns_dat_end
+                0x000000000002e219                _binary_resources_sportscar_shop_patterns_dat_start
+ .data          0x000000000002e4d9      0x2e0 resources/sportscar_sprites.o
+                0x000000000002e7b9                _binary_resources_sportscar_sprites_dat_end
+                0x000000000002e4d9                _binary_resources_sportscar_sprites_dat_start
+ .data          0x000000000002e7b9      0x5a0 resources/stay_puft_sprite_patterns.o
+                0x000000000002e7b9                _binary_resources_stay_puft_sprite_patterns_dat_start
+                0x000000000002ed59                _binary_resources_stay_puft_sprite_patterns_dat_end
+ .data          0x000000000002ed59     0x1800 resources/suburban_bldg_colors.o
+                0x000000000002ed59                _binary_resources_suburban_bldg_colors_dat_start
+                0x0000000000030559                _binary_resources_suburban_bldg_colors_dat_end
+ .data          0x0000000000030559     0x1800 resources/suburban_bldg_patterns.o
+                0x0000000000030559                _binary_resources_suburban_bldg_patterns_dat_start
+                0x0000000000031d59                _binary_resources_suburban_bldg_patterns_dat_end
+ .data          0x0000000000031d59     0x252c resources/themesong.o
+                0x0000000000034285                _binary_resources_themesong_dat_end
+                0x0000000000031d59                _binary_resources_themesong_dat_start
+ .data          0x0000000000034285     0x1800 resources/title_colors.o
+                0x0000000000035a85                _binary_resources_title_colors_dat_end
+                0x0000000000034285                _binary_resources_title_colors_dat_start
+ .data          0x0000000000035a85     0x1800 resources/title_patterns.o
+                0x0000000000035a85                _binary_resources_title_patterns_dat_start
+                0x0000000000037285                _binary_resources_title_patterns_dat_end
+ .data          0x0000000000037285       0x80 resources/title_sprite_attributes.o
+                0x0000000000037305                _binary_resources_title_sprite_attributes_dat_end
+                0x0000000000037285                _binary_resources_title_sprite_attributes_dat_start
+ .data          0x0000000000037305      0x200 resources/title_sprite_patterns.o
+                0x0000000000037305                _binary_resources_title_sprite_patterns_dat_start
+                0x0000000000037505                _binary_resources_title_sprite_patterns_dat_end
+ .data          0x0000000000037505       0x10 resources/wagon_colors.o
+                0x0000000000037515                _binary_resources_wagon_colors_dat_end
+                0x0000000000037505                _binary_resources_wagon_colors_dat_start
+ .data          0x0000000000037515      0x600 resources/wagon_nametable.o
+                0x0000000000037b15                _binary_resources_wagon_nametable_dat_end
+                0x0000000000037515                _binary_resources_wagon_nametable_dat_start
+ .data          0x0000000000037b15      0x400 resources/wagon_patt0.o
+                0x0000000000037f15                _binary_resources_wagon_patt0_dat_end
+                0x0000000000037b15                _binary_resources_wagon_patt0_dat_start
+ .data          0x0000000000037f15      0x400 resources/wagon_patt1.o
+                0x0000000000038315                _binary_resources_wagon_patt1_dat_end
+                0x0000000000037f15                _binary_resources_wagon_patt1_dat_start
+ .data          0x0000000000038315      0x400 resources/wagon_patt2.o
+                0x0000000000038315                _binary_resources_wagon_patt2_dat_start
+                0x0000000000038715                _binary_resources_wagon_patt2_dat_end
+ .data          0x0000000000038715      0x400 resources/wagon_patt3.o
+                0x0000000000038b15                _binary_resources_wagon_patt3_dat_end
+                0x0000000000038715                _binary_resources_wagon_patt3_dat_start
+ .data          0x0000000000038b15      0x400 resources/wagon_patt4.o
+                0x0000000000038b15                _binary_resources_wagon_patt4_dat_start
+                0x0000000000038f15                _binary_resources_wagon_patt4_dat_end
+ .data          0x0000000000038f15      0x400 resources/wagon_patt5.o
+                0x0000000000039315                _binary_resources_wagon_patt5_dat_end
+                0x0000000000038f15                _binary_resources_wagon_patt5_dat_start
+ .data          0x0000000000039315      0x400 resources/wagon_patt6.o
+                0x0000000000039715                _binary_resources_wagon_patt6_dat_end
+                0x0000000000039315                _binary_resources_wagon_patt6_dat_start
+ .data          0x0000000000039715      0x400 resources/wagon_patt7.o
+                0x0000000000039b15                _binary_resources_wagon_patt7_dat_end
+                0x0000000000039715                _binary_resources_wagon_patt7_dat_start
+ .data          0x0000000000039b15       0x20 resources/wagon_shop_colors.o
+                0x0000000000039b15                _binary_resources_wagon_shop_colors_dat_start
+                0x0000000000039b35                _binary_resources_wagon_shop_colors_dat_end
+ .data          0x0000000000039b35       0xd8 resources/wagon_shop_nametable.o
+                0x0000000000039c0d                _binary_resources_wagon_shop_nametable_dat_end
+                0x0000000000039b35                _binary_resources_wagon_shop_nametable_dat_start
+ .data          0x0000000000039c0d      0x320 resources/wagon_shop_patterns.o
+                0x0000000000039c0d                _binary_resources_wagon_shop_patterns_dat_start
+                0x0000000000039f2d                _binary_resources_wagon_shop_patterns_dat_end
+ .data          0x0000000000039f2d      0x2e0 resources/wagon_sprites.o
+                0x0000000000039f2d                _binary_resources_wagon_sprites_dat_start
+                0x000000000003a20d                _binary_resources_wagon_sprites_dat_end
+ .data          0x000000000003a20d      0x140 resources/won.o
+                0x000000000003a34d                _binary_resources_won_dat_end
+                0x000000000003a20d                _binary_resources_won_dat_start
+ .data          0x000000000003a34d      0x160 resources/wonwon.o
+                0x000000000003a4ad                _binary_resources_wonwon_dat_end
+                0x000000000003a34d                _binary_resources_wonwon_dat_start
+ .data          0x000000000003a4ad      0x800 resources/zuul_colors.o
+                0x000000000003acad                _binary_resources_zuul_colors_dat_end
+                0x000000000003a4ad                _binary_resources_zuul_colors_dat_start
+ .data          0x000000000003acad     0x1400 resources/zuul_nametable00.o
+                0x000000000003c0ad                _binary_resources_zuul_nametable00_dat_end
+                0x000000000003acad                _binary_resources_zuul_nametable00_dat_start
+ .data          0x000000000003c0ad      0x800 resources/zuul_patterns.o
+                0x000000000003c8ad                _binary_resources_zuul_patterns_dat_end
+                0x000000000003c0ad                _binary_resources_zuul_patterns_dat_start
+LOAD resources/account_colors.o
+LOAD resources/account_patterns.o
+LOAD resources/account_sprite_patterns.o
+LOAD resources/account_sprites.o
+LOAD resources/account_text.o
+LOAD resources/beetle_colors.o
+LOAD resources/beetle_nametable.o
+LOAD resources/beetle_patt0.o
+LOAD resources/beetle_patt1.o
+LOAD resources/beetle_patt2.o
+LOAD resources/beetle_patt3.o
+LOAD resources/beetle_patt4.o
+LOAD resources/beetle_patt5.o
+LOAD resources/beetle_patt6.o
+LOAD resources/beetle_patt7.o
+LOAD resources/beetle_shop_colors.o
+LOAD resources/beetle_shop_nametable.o
+LOAD resources/beetle_shop_patterns.o
+LOAD resources/beetle_sprites.o
+LOAD resources/boss_battle_colors.o
+LOAD resources/boss_battle_patterns.o
+LOAD resources/brooklyn_bldg_colors.o
+LOAD resources/brooklyn_bldg_patterns.o
+LOAD resources/drive_colors.o
+LOAD resources/drive_nametable.o
+LOAD resources/drive_patt0.o
+LOAD resources/drive_patt1.o
+LOAD resources/drive_patt2.o
+LOAD resources/drive_patt3.o
+LOAD resources/drive_patt4.o
+LOAD resources/drive_patt5.o
+LOAD resources/drive_patt6.o
+LOAD resources/drive_patt7.o
+LOAD resources/drive_sprites.o
+LOAD resources/font.o
+LOAD resources/fx.o
+LOAD resources/gbhq_bldg_colors.o
+LOAD resources/gbhq_bldg_patterns.o
+LOAD resources/glowing_skull_sprites.o
+LOAD resources/hearse_shop_colors.o
+LOAD resources/hearse_shop_nametable.o
+LOAD resources/hearse_shop_patterns.o
+LOAD resources/house_bldg_colors.o
+LOAD resources/house_bldg_patterns.o
+LOAD resources/introscroll.o
+LOAD resources/logo_colors.o
+LOAD resources/logo_music.o
+LOAD resources/logo_nametable00.o
+LOAD resources/logo_patterns.o
+LOAD resources/lost.o
+LOAD resources/lyrics.o
+LOAD resources/main_sprites.o
+LOAD resources/maintheme.o
+LOAD resources/map_colors.o
+LOAD resources/map_nw_colors.o
+LOAD resources/map_nw_nametable00.o
+LOAD resources/map_nw_nametable01.o
+LOAD resources/map_nw_patterns.o
+LOAD resources/map_patterns.o
+LOAD resources/office_bldg_colors.o
+LOAD resources/office_bldg_patterns.o
+LOAD resources/scrollfont_patterns.o
+LOAD resources/sedgewick_bldg_colors.o
+LOAD resources/sedgewick_bldg_patterns.o
+LOAD resources/shop_font_patterns.o
+LOAD resources/shop_sprite_patterns.o
+LOAD resources/shout.o
+LOAD resources/skull_sprites.o
+LOAD resources/slimed.o
+LOAD resources/sportscar_colors.o
+LOAD resources/sportscar_nametable.o
+LOAD resources/sportscar_patt0.o
+LOAD resources/sportscar_patt1.o
+LOAD resources/sportscar_patt2.o
+LOAD resources/sportscar_patt3.o
+LOAD resources/sportscar_patt4.o
+LOAD resources/sportscar_patt5.o
+LOAD resources/sportscar_patt6.o
+LOAD resources/sportscar_patt7.o
+LOAD resources/sportscar_shop_colors.o
+LOAD resources/sportscar_shop_nametable.o
+LOAD resources/sportscar_shop_patterns.o
+LOAD resources/sportscar_sprites.o
+LOAD resources/stay_puft_sprite_patterns.o
+LOAD resources/suburban_bldg_colors.o
+LOAD resources/suburban_bldg_patterns.o
+LOAD resources/themesong.o
+LOAD resources/title_colors.o
+LOAD resources/title_patterns.o
+LOAD resources/title_sprite_attributes.o
+LOAD resources/title_sprite_patterns.o
+LOAD resources/wagon_colors.o
+LOAD resources/wagon_nametable.o
+LOAD resources/wagon_patt0.o
+LOAD resources/wagon_patt1.o
+LOAD resources/wagon_patt2.o
+LOAD resources/wagon_patt3.o
+LOAD resources/wagon_patt4.o
+LOAD resources/wagon_patt5.o
+LOAD resources/wagon_patt6.o
+LOAD resources/wagon_patt7.o
+LOAD resources/wagon_shop_colors.o
+LOAD resources/wagon_shop_nametable.o
+LOAD resources/wagon_shop_patterns.o
+LOAD resources/wagon_sprites.o
+LOAD resources/won.o
+LOAD resources/wonwon.o
+LOAD resources/zuul_colors.o
+LOAD resources/zuul_nametable00.o
+LOAD resources/zuul_patterns.o
+OUTPUT(temp.bin binary)
