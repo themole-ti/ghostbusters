@@ -88,14 +88,14 @@ void load_map()
 
 	ENABLE_MUSIC_ON_COPY;
 		// Load color, pattern and sprite generator resources from ROM
-		rom_to_vram(map_nw_nametable00_bank, map_nw_nametable00_offset, 768, 0x1800);
-		rom_to_vram(unwrap(map_nw_patterns), 0x0000);	// upper third
-		rom_to_vram(unwrap(map_nw_patterns), 0x0800);	// middle third
-		rom_to_vram(unwrap(map_nw_patterns), 0x1000);	// lower third
-		rom_to_vram(unwrap(map_nw_colors), 0x2000);		// upper third
-		rom_to_vram(unwrap(map_nw_colors), 0x2800);		// middle third
-		rom_to_vram(unwrap(map_nw_colors), 0x3000);		// lower third
-		rom_to_vram(unwrap(main_sprites), SDT * 0x800);
+		rom_to_vram(map_nw_nametable00_bank,	map_nw_nametable00_offset, 	768,  						0x1800);
+		rom_to_vram(map_nw_patterns_bank, 		map_nw_patterns_offset, 	map_nw_patterns_length,		0x0000);	// upper third
+		rom_to_vram(map_nw_patterns_bank, 		map_nw_patterns_offset, 	map_nw_patterns_length,		0x0800);	// middle third
+		rom_to_vram(map_nw_patterns_bank, 		map_nw_patterns_offset, 	map_nw_patterns_length,		0x1000);	// lower third
+		rom_to_vram(map_nw_colors_bank, 		map_nw_colors_offset, 		map_nw_colors_length,		0x2000);	// upper third
+		rom_to_vram(map_nw_colors_bank, 		map_nw_colors_offset, 		map_nw_colors_length,		0x2800);	// middle third
+		rom_to_vram(map_nw_colors_bank, 		map_nw_colors_offset, 		map_nw_colors_length,		0x3000);	// lower third
+		rom_to_vram(main_sprites_bank, 			main_sprites_offset, 		main_sprites_length,		SDT * 0x800);
 
 		// Pre-display the game state in the bar below
 		if (scroll_len < 1)
@@ -170,7 +170,7 @@ void lay_dot(int x, int y, int pattern)
 
 	int addr = 0x1800 + ((y + 1) * 32) + (x + 1);
 
-	// TODO: find a quicker way to check if we need to lay down a dot...
+	// TODO: find a quicker (non-vdpgetch) way to check if we need to lay down a dot...
 	// if (vdpgetch(addr) != bait_patt)
 		vdpchar(addr, pattern);
 }
@@ -1085,4 +1085,8 @@ int _do_map_screen()
 			return 0;
 		}
 	}
+	
+	// // Pressed fire, make noise!
+	StopSfx();
+	VSYNC_PLAY;
 }

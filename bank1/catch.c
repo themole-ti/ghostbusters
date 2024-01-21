@@ -392,32 +392,33 @@ void move_ghost()
 	if (men[0].state == STATE_FIRING)
 	{
 		// Get x position of beams at ghost's y position
-		int x1;
-		int x2;
+		int beam1_x;
+		int beam2_x;
 
 		if (men[0].direction == DIR_RIGHT)
-			x1 = men[0].x + ((men[0].y - (ghost.y + ghost.vdir)) >> 1) + 8;
+			beam1_x = men[0].x + ((men[0].y - (ghost.y + ghost.vdir)) >> 1) + 8;
 		else
-			x1 = men[0].x - ((men[0].y - (ghost.y + ghost.vdir)) >> 1) - 8;
+			beam1_x = men[0].x - ((men[0].y - (ghost.y + ghost.vdir)) >> 1) - 8;
 
 		if (men[1].direction == DIR_LEFT)
-			x2 = men[1].x - ((men[1].y - (ghost.y + ghost.vdir)) >> 1) - 8;
+			beam2_x = men[1].x - ((men[1].y - (ghost.y + ghost.vdir)) >> 1) - 8;
 		else
-			x2 = men[1].x + ((men[1].y - (ghost.y + ghost.vdir)) >> 1) + 8;
+			beam2_x = men[1].x + ((men[1].y - (ghost.y + ghost.vdir)) >> 1) + 8;
 
-		// If we're about to hit one of the beams, bounce back hard
+		// If we're about to hit one of the beams, bounce the ghost off of the beam
+		// in the opposite direction
 		if (ghost.y > 16)	// Make sure spook is not higher than streams
 		{
-			if (abs((ghost.x + ghost.hdir) - x1) < (BEAM_BOUNCE + 1))
+			if (abs((ghost.x + ghost.hdir) - beam1_x) < (BEAM_BOUNCE + 1))
 			{
-				if ((ghost.x + ghost.hdir) > x1)
+				if ((ghost.x + ghost.hdir) > beam1_x)
 					ghost.x += BEAM_BOUNCE;
 				else
 					ghost.x -= BEAM_BOUNCE;
 			}
-			else if (abs((ghost.x + ghost.hdir) - x2) < (BEAM_BOUNCE + 1))
+			else if (abs((ghost.x + ghost.hdir) - beam2_x) < (BEAM_BOUNCE + 1))
 			{
-				if ((ghost.x + ghost.hdir) > x2)
+				if ((ghost.x + ghost.hdir) > beam2_x)
 					ghost.x += BEAM_BOUNCE;
 				else
 					ghost.x -= BEAM_BOUNCE;
@@ -461,7 +462,7 @@ void move_ghost()
 			ghost.y += ghost.vdir;
 		}
 	}
-	else if ((men[0].state == STATE_LOST) || (men[0].state == STATE_SLIMED))
+	else if ((men[0].state == STATE_LOST) || (men[left_man].state == STATE_SLIMED))
 	{
 		// Calculate velocity to get to left man
 		if (counter == START_COUNTER)
@@ -519,7 +520,7 @@ void move_ghost()
 		ghost.y += ghost.vdir;
 	}
 
-	if ((!ghost_caught) && !(men[0].state == STATE_LOST) && !(men[0].state == STATE_SLIMED))
+	if ((!ghost_caught) && !(men[0].state == STATE_LOST) && !(men[left_man].state == STATE_SLIMED))
 	{
 		if (ghost.x > 240) ghost.x = 240;
 		if (ghost.x <   2) ghost.x =   2;
@@ -984,12 +985,14 @@ void _do_catch_screen(int building_id)
 						// Reset framecounter for victory animation
 						counter = START_COUNTER;
 						men[0].state = STATE_WON;
+						men[1].state = STATE_WON;
 						game.account += ((buildings[building_id].haunted / 10) + 1);
 						game.traps--;
 					}
 					else
 					{
 						men[0].state = STATE_LOST;
+						men[1].state = STATE_LOST;
 						game.men--;
 					}
 				}
@@ -1060,7 +1063,7 @@ void _do_catch_screen(int building_id)
 		// Only cycle sprites when catching
 		render_sprites(TRUE, SAL);		
 
-		// Check to see if building was haunted, if not, we leave
+		// Check to see if building was/is still haunted, if not, we leave
 		if (men[0].state < STATE_WON)
 		{
 			if ((buildings[building_id].haunted == 0 || buildings[building_id].prehaunt != 0) && (building_id != GHQ_ID))
