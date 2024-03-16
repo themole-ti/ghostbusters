@@ -20,11 +20,10 @@
 program_record:
   data  0x0000    			# Next program chain record
   data  _start_bank 		# Entry point for program
-  nstring "GHOSTBUSTERS"# Name of program
+#  nstring "GHOSTBUSTERS"# Name of program
+  data 0x0f10, 0x1112, 0x1314, 0x1516, 0x1718, 0x191a, 0x1b00, 0x0000
   even
 
 # Jump to bank 0
 _start_bank             # Entry point for program
-  li 	r9, >ASM_ADDRESS  # Load bank 0 address in register
-  clr	*r9               # Write to memory address in r9 (any write will do, clr is quick)
   b   @_start           # Branch to real program entry point: _start function in crt0.c

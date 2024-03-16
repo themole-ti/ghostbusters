@@ -49,52 +49,27 @@ SECTIONS
 		_scratchpad_end = . ;
 	}
 
-	.header1 0x6000    	: AT ( 0x8000 ) 
-	{ 
-		bank1/cart_header.o(.text) 
-	}	
-
-	.bank1 0x6026   	: AT ( 0x8026 ) 
+	.bank1 0x6000   	: AT ( 0x8000 ) 
 	{ 
 		bank1/*.o(.text); 
 	}
 	
-	.header2 0x6000    	: AT ( 0xa000 ) 
-	{ 
-		bank2/cart_header.o(.text) 
-	}	
-	
-	.bank2 0x6026    	: AT ( 0xa026 ) 
+	.bank2 0x6000    	: AT ( 0xa000 ) 
 	{ 
 		bank2/*.o(.text); 
 	}
 	
-	.header3 0x6000    	: AT ( 0xc000 ) 
-	{ 
-		bank3/cart_header.o(.text) 
-	}	
-	
-	.bank3 0x6026    	: AT ( 0xc026 ) 
+	.bank3 0x6000    	: AT ( 0xc000 ) 
 	{ 
 		bank3/*.o(.text); 
 	}
 	
-	.header4 0x6000    	: AT ( 0xe000 ) 
-	{ 
-		bank4/cart_header.o(.text) 
-	}	
-	
-	.bank4 0x6026    	: AT ( 0xe026 ) 
+	.bank4 0x6000    	: AT ( 0xe000 ) 
 	{ 
 		bank4/*.o(.text); 
 	}
 	
-	.header5 0x6000    	: AT ( 0x10000 ) 
-	{ 
-		bank5/cart_header.o(.text) 
-	}	
-	
-	.bank5 0x6026    	: AT ( 0x10026 ) 
+	.bank5 0x6000    	: AT ( 0x10000 ) 
 	{ 
 		bank5/*.o(.text); 
 	}
@@ -138,12 +113,7 @@ SECTIONS
 	{ 
 		BYTE(0x00); 
 	}	/* Pad to 504kb, 8k less than full image size */
-	
-	.headerend 0x6000	: AT ( 0x84000) 
-	{ 
-		bankx/cart_header.o(.text) 
-	}
-	
+
 	.fill2  0x85fff   	: AT ( 0x85fff) 
 	{ 
 		BYTE(0x00); 
@@ -151,4 +121,4 @@ SECTIONS
 }
 
 /* Ensure banks don't call each other's functions directly */
-NOCROSSREFS( .bank0 .bank1 .bank2 .bank3)
+NOCROSSREFS( .bank0 .bank1 .bank2 .bank3 .bank4 .bank5)

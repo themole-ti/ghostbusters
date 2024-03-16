@@ -1,0 +1,66 @@
+* minimal GROM code to execute a short GPL startup program
+        grom >6000
+        aorg >0000
+
+* cartridge Header
+        data >AA01      * flag + version
+        data >0000      * reserved
+        data strtuplst  * powerup list
+        data >0000      * program menu list
+        data >0000      * other lists we don't use
+        data >0000
+        data >0000
+        data >0000      * end of header 16 bytes
+
+strtuplst
+        data >0000
+        data boot
+
+boot
+        back 15
+        move 72, G@logopatterns, V@>0808
+        move 96, G@titlepatterns, V@>0880
+        st   >8f, V@>0380
+        st   >8f, V@>0381
+        st   >f8, V@>0382
+        st   >8f, V@>0383
+        st   >1f, V@>0384
+        st   >1f, V@>0385
+        st   >1f, V@>0386
+        st   >1f, V@>0387
+        st   >1f, V@>0388
+        st   >1f, V@>0389
+        st   >1f, V@>038a
+        st   >1f, V@>038b
+        st   >77, V@>0392
+        clr  @>6000     * switch to bank 0
+
+done
+        dst   *>8372, *>8373       * Transfer address from data stack to sub stack
+        dect  @>8372               * Update pointer
+        rtn                        * This will branch to the next startup routine
+
+titlepatterns
+        data >c180, >1c3f, >381c, >80c1
+        data >1899, >9981, >8199, >9918
+        data >c180, >1832, >260c, >80c1
+        data >e0c0, >4f40, >607f, >f0e0
+        data >40c0, >d273, >3333, >3361
+        data >8180, >9c80, >819c, >8081
+        data >9c9c, >9c9c, >9c98, >80c1
+        data >c081, >9f80, >c0fe, >e0c0
+        data >7e7e, >5a18, >9898, >983c
+        data >fe7e, >6278, >7862, >7efe
+        data >fcfe, >c6fe, >fcc6, >c6ef
+        data >7efc, >c0fe, >7f03, >3f7e
+
+logopatterns
+        data >0000, >0000, >0103, >060e
+        data >001e, >6187, >5753, >0323
+        data >0000, >80e0, >f0f8, >fcfe
+        data >0e1f, >3c58, >4040, >2713
+        data >2409, >030f, >1ffe, >f8f0
+        data >7efd, >f9c3, >c189, >7f1f
+        data >0f0f, >0703, >0100, >0000
+        data >f8c0, >f1ff, >ffff, >3f00
+        data >3e7e, >fcf8, >f0e0, >8000

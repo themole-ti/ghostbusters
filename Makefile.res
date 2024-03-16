@@ -1,7 +1,3 @@
-# Program details
-RESOURCE_DIR=./resources
-
-
 # Paths to TMS9900 compilation tools
 BASE_PATH=../../toolchain/tms9900/bin
 LD=$(BASE_PATH)/tms9900-ld
@@ -21,13 +17,6 @@ PREREQUISITES= $(OBJECT_LIST)
 all: $(PREREQUISITES)
 	@$(LD) --script bin.ld $(OBJECT_LIST) -o temp.bin -M > res.map
 	@rm temp.bin
-	@echo "\t[LD] Binary object creation done."
-
-# Recipe to compile the executable
-geneve: $(PREREQUISITES)
-	@$(LD) --script bin.geneve.ld $(OBJECT_LIST) -o temp.bin -M > res.map
-	@rm temp.bin
-	@echo "\t[LD] Binary object creation done."
 
 # Recipe to convert binary files to elf objects
 # for inclusion by the linker

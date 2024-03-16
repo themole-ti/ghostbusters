@@ -1,16 +1,12 @@
 # Program details
-NAME=ghostbusters
-INSTALL_DIR=~/mame0202-64bit/carts
-RESOURCE_DIR=./resources
+NAME=gbust
 
 # Paths to TMS9900 compilation tools
-BASE_PATH=../../toolchain/tms9900
-AS=$(BASE_PATH)/bin/tms9900-as
-LD=$(BASE_PATH)/bin/tms9900-ld
-CC=$(BASE_PATH)/bin/tms9900-gcc
-INCLUDE_PATH=../include
-LIB_PATH=persistent
-
+BASE_PATH=../../toolchain/
+AS=$(BASE_PATH)tms9900/bin/tms9900-as
+LD=$(BASE_PATH)tms9900/bin/tms9900-ld
+CC=$(BASE_PATH)tms9900/bin/tms9900-gcc
+XGA=$(BASE_PATH)xdt99-1.3.0/xga99.py
 
 # List of compiled objects used in executable
 # All resources and source files get added automatically. Do not fudge around with this
@@ -29,6 +25,9 @@ OBJECT_LIST=                                            \
   $(patsubst %.asm,%.o,$(wildcard persistent/*.asm))    \
   $(patsubst %.dat,%.o,$(wildcard resources/*.dat))
 
+# includes and libraries
+INCLUDE_PATH=../include
+LIB_PATH=persistent
 LIBRARIES=																							\
 	-ltivgm2																							\
 
@@ -38,41 +37,31 @@ PREREQUISITES= $(OBJECT_LIST)
 # Compiler flags
 CCFLAGS= $(LIBRARIES) -std=c99 -Werror -Wall -Os -s -Iinclude -I$(INCLUDE_PATH) -c
 
-# Linker flags for flat cart binary
-# Most of this is defined in the linker script
-LDFLAGS= -L$(LIB_PATH)
+# Linker flags for flat cart binary, most of this is defined in the linker script
+LDFLAGS= -L$(LIB_PATH) --no-check-sections 
 
 # Recipe to compile the executable
 all: resource_defs $(PREREQUISITES)
 	@echo
-	@echo "\t[LD] $(NAME).bin"
-	@$(LD) --script cart.ld $(LDFLAGS) $(OBJECT_LIST) $(LIBRARIES) -o $(NAME).bin -M > link.map
+	@echo "\t[XG] $(NAME)g.bin"
+	@$(XGA) startgrom.gpl -o $(NAME)g.bin
+	@echo "\t[LD] $(NAME)8.bin"
+	@$(LD) --script cart.ld $(LDFLAGS) $(OBJECT_LIST) $(LIBRARIES) -o $(NAME)8.bin -M > link.map
 	@echo "\t[ZP] $(NAME).rpk"
-	@zip $(NAME).rpk layout.xml $(NAME).bin >> /dev/null
-	@./mem_usage.sh
-
-geneve: resource_defs_geneve $(PREREQUISITES)
+	@zip $(NAME).rpk layout.xml $(NAME)8.bin $(NAME)g.bin >> /dev/null
+	@./mem_usage.sh $(NAME).bin
 	@echo
-	@echo "\t[LD] $(OBJECT_LIST) $(LIBRARIES) -> $(NAME).bin"
-	@$(LD) --script geneve.ld $(LDFLAGS) $(OBJECT_LIST) $(LIBRARIES) -o $(NAME).bin -M > link.geneve.map
+
+dist: all
+	@echo "\t[CP] Populating dist folder"
+	@cp $(NAME).rpk $(NAME)8.bin $(NAME)g.bin dist/
 	@echo
 
 # Create set of resource defines for binary resources
 resource_defs:
-	@echo "\t[SH] Creating resource_defs.h"
+	@echo "\t[SH] Creating resource_defs.h ..."
 	@./create_resourcedefs.sh include/resource_defs.h
-
-# Create set of resource defines for binary resources
-resource_defs_geneve:
-	@echo "\t[SH] Creating resource_defs.h"
-	@./create_resourcedefs.sh include/resource_defs.h geneve
-
-# Build GPU program
-#gpu:
-#	$(CC) -std=c99 -Werror -Wall -c gpucode.c -Os -s -o gpucode.o
-#	$(LD) gpucode.o --section-start .text=0x1900 -o gpucode.elf
-#	$(OBJCPY) -O binary gpucode.elf gpucode.bin
-#	bin2h gpucode.bin -b gpucode -f gpucode.h
+	@echo "\t[SH] Created resource_defs.h"
 
 # Recipe to clean all compiled objects
 .phony clean:
@@ -81,11 +70,12 @@ resource_defs_geneve:
 	@rm -f persistent/*.o
 	@rm -f bank?/*.o
 	@rm -f resources/*.o
+	@rm -f *.map
+	@rm -f *.md5
 	@rm -f $(NAME).rpk
-	@rm -f link.map
-	@rm -f $(NAME).bin
+	@rm -f $(NAME)8.bin
+	@rm -f $(NAME)g.bin
 	@echo
-
 
 # Recipe to convert binary files to elf objects
 # for inclusion by the linker

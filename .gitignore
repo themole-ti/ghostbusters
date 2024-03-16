@@ -44,6 +44,8 @@ github_token.txt
 *.su
 *.idb
 *.pdb
+*.md5
+*.map
 
 # Kernel Module Compile Results
 *.mod*
