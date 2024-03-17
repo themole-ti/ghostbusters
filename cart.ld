@@ -28,6 +28,8 @@ SECTIONS
 	.persistent	: AT ( _persistent_src ) 
 	{ 
 		_persistent = . ; 
+		persistent\\*.a:*(.text); 
+		persistent\\*.o(.text); 
 		persistent/*.a:*(.text); 
 		persistent/*.o(.text); 
 		_persistent_end = . ;
@@ -36,6 +38,7 @@ SECTIONS
 	.bank0 (LOADADDR(.persistent) + SIZEOF( .persistent )) : 
 	{ 
 		_text = . ; 
+		bank0\\*.o(.text); 
 		bank0/*.o(.text); 
 		_text_end = . ;
 	}
@@ -45,38 +48,54 @@ SECTIONS
 	.scratchpad	0x8342	: AT ( _text_end ) 
 	{ 
 		_scratchpad = . ; 
+		scratchpad\\*.o(.text); 
 		scratchpad/*.o(.text); 
 		_scratchpad_end = . ;
 	}
 
 	.bank1 0x6000   	: AT ( 0x8000 ) 
 	{ 
+		bank1\\*.o(.text); 
 		bank1/*.o(.text); 
 	}
 	
 	.bank2 0x6000    	: AT ( 0xa000 ) 
 	{ 
+		bank2\\*.o(.text); 
 		bank2/*.o(.text); 
 	}
 	
 	.bank3 0x6000    	: AT ( 0xc000 ) 
 	{ 
+		bank3\\*.o(.text); 
 		bank3/*.o(.text); 
 	}
 	
 	.bank4 0x6000    	: AT ( 0xe000 ) 
 	{ 
+		bank4\\*.o(.text); 
 		bank4/*.o(.text); 
 	}
 	
 	.bank5 0x6000    	: AT ( 0x10000 ) 
 	{ 
+		bank5\\*.o(.text); 
 		bank5/*.o(.text); 
 	}
 	
 	.data  0xa000    	: AT ( 0x12000 ) 
 	{
 		_data = . ; 
+		persistent\\*.a:*(songDatVars) 
+		persistent\\*.a:*(sfxDatVars) 
+		persistent\\*.a:*( .data ) 
+		persistent\\*.o( .data ) 
+		bank0\\*.o( .data ) 
+		bank1\\*.o( .data ) 
+		bank2\\*.o( .data ) 
+		bank3\\*.o( .data ) 
+		bank4\\*.o( .data ) 
+		bank5\\*.o( .data ); 
 		persistent/*.a:*(songDatVars) 
 		persistent/*.a:*(sfxDatVars) 
 		persistent/*.a:*( .data ) 
@@ -98,6 +117,14 @@ SECTIONS
 	.bss (_data_end) 	: AT ( 0x7e000) 
 	{ 
 		_bss = . ; 
+		persistent\\*.a:*(.bss) 
+		persistent\\*.o( .bss ) 
+		bank0\\*.o( .bss ) 
+		bank1\\*.o( .bss ) 
+		bank2\\*.o( .bss ) 
+		bank3\\*.o( .bss )
+		bank4\\*.o( .bss ) 
+		bank5\\*.o( .bss ); 
 		persistent/*.a:*(.bss) 
 		persistent/*.o( .bss ) 
 		bank0/*.o( .bss ) 

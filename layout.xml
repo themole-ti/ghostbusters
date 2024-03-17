@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <romset version="1.0">
    <resources>
-      <rom id="romimage" file="gbust8.bin"/>
+      <rom id="romimage" file="gbustc.bin"/>
       <rom id="gromimage" file="gbustg.bin"/>
    </resources>
    <configuration>
-       <pcb type="paged378">
+       <pcb type="gromemu">
           <socket id="rom_socket" uses="romimage"/>
           <socket id="grom_socket" uses="gromimage"/>       
        </pcb>

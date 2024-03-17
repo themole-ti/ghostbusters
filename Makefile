@@ -6,15 +6,15 @@ BASE_PATH=../../toolchain/
 AS=$(BASE_PATH)tms9900/bin/tms9900-as
 LD=$(BASE_PATH)tms9900/bin/tms9900-ld
 CC=$(BASE_PATH)tms9900/bin/tms9900-gcc
-XGA=$(BASE_PATH)xdt99-1.3.0/xga99.py
+XGA=$(BASE_PATH)xdt99/xga99.py
 
 # List of compiled objects used in executable
 # All resources and source files get added automatically. Do not fudge around with this
 # To add .c or .asm files, just add them in one of the bank<?> directories
 # To add source code banks, just create a new dir with the name bank<?>
 # To add resources, just drop a binary file in the folder "resources" and give
-# it a .dat extension. You can then find it in the ROM image between memory locations
-# _binary_resources_<filename>_dat_start and _binary_resources_<filename>_dat_end
+# it a .dat extension. You can then find it in the ROM image at the memory location
+# <filename>_bank, <filename>_offset with a length of <filename>_length
 # Extra banks for data files are created as needed.
 OBJECT_LIST=                                            \
   $(patsubst %.c,%.o,$(wildcard bank?/*.c))             \
@@ -35,7 +35,7 @@ LIBRARIES=																							\
 PREREQUISITES= $(OBJECT_LIST)
 
 # Compiler flags
-CCFLAGS= $(LIBRARIES) -std=c99 -Werror -Wall -Os -s -Iinclude -I$(INCLUDE_PATH) -c
+CCFLAGS= $(LIBRARIES) -std=c99 -Werror -Wall -Os -s -fno-function-cse -Iinclude -I$(INCLUDE_PATH) -c
 
 # Linker flags for flat cart binary, most of this is defined in the linker script
 LDFLAGS= -L$(LIB_PATH) --no-check-sections 
@@ -44,17 +44,17 @@ LDFLAGS= -L$(LIB_PATH) --no-check-sections
 all: resource_defs $(PREREQUISITES)
 	@echo
 	@echo "\t[XG] $(NAME)g.bin"
-	@$(XGA) startgrom.gpl -o $(NAME)g.bin
-	@echo "\t[LD] $(NAME)8.bin"
-	@$(LD) --script cart.ld $(LDFLAGS) $(OBJECT_LIST) $(LIBRARIES) -o $(NAME)8.bin -M > link.map
+	@$(XGA) startgrom.gpl -o $(NAME)g.bin -B
+	@echo "\t[LD] $(NAME)c.bin"
+	@$(LD) --script cart.ld $(LDFLAGS) $(OBJECT_LIST) $(LIBRARIES) -o $(NAME)c.bin -M > link.map
 	@echo "\t[ZP] $(NAME).rpk"
-	@zip $(NAME).rpk layout.xml $(NAME)8.bin $(NAME)g.bin >> /dev/null
+	@zip $(NAME).rpk layout.xml $(NAME)c.bin $(NAME)g.bin >> /dev/null
 	@./mem_usage.sh $(NAME).bin
 	@echo
 
 dist: all
 	@echo "\t[CP] Populating dist folder"
-	@cp $(NAME).rpk $(NAME)8.bin $(NAME)g.bin dist/
+	@cp $(NAME).rpk $(NAME)c.bin $(NAME)g.bin dist/
 	@echo
 
 # Create set of resource defines for binary resources
@@ -73,7 +73,7 @@ resource_defs:
 	@rm -f *.map
 	@rm -f *.md5
 	@rm -f $(NAME).rpk
-	@rm -f $(NAME)8.bin
+	@rm -f $(NAME)c.bin
 	@rm -f $(NAME)g.bin
 	@echo
 
