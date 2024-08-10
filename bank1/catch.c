@@ -964,7 +964,7 @@ void _do_catch_screen(int building_id)
 			put_man(1);
 
 			// Handle ghost logic
-			if (buildings[building_id].haunted)
+			if (has_ghost)
 				move_ghost();
 
 			// Catching sequence
@@ -1068,8 +1068,8 @@ void _do_catch_screen(int building_id)
 		{
 			if ((buildings[building_id].haunted == 0 || buildings[building_id].prehaunt != 0) && (building_id != GHQ_ID))
 			{
-				men[0].state = STATE_WAITING;
-				men[1].state = STATE_WAITING;
+				men[0].state = STATE_TOOLATE;
+				men[1].state = STATE_TOOLATE;
 				StopSfx();
 
 				for (int i = 0; i < 120; i++)

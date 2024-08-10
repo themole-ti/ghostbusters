@@ -33,7 +33,7 @@ extern volatile unsigned int currentbank;
 	// Switching banks on the TI E.g.
 	// 		switchtobank(2);
 	// will switch to bank 2
-	#define switchtobank(x)	{ *((volatile unsigned char*)MAPPERADDR + (x << 1)) = 1; }
+	#define switchtobank(x)	{ *((volatile unsigned char*)MAPPERADDR + (x << 1)) = 0; }
 #endif
 
 #endif

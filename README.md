@@ -11,14 +11,14 @@ In order to build the "boot grom", you need the xga99 GPL assembler from the xdt
 The game also uses Tursi's libti99 for certain functions (mostly the sound player), so make sure you have that installed in your include and library paths.
 
 Once you have the compiler and GPL assembler installed and ready to go, check the Makefiles (`Makefile` and `Makefile.res`) and make sure that the paths point to your toolchain binaries. Then, simply issue a `make` command in the root folder of the project, and it should start the build process.
-When the build has completed, you will find two files called `gbust8.bin` and `gbustg.bin`.  In addition to this, a `gbust.rpk` file is created for use with Mame and js99er.net.
+When the build has completed, you will find two files called `gbustc.bin` and `gbustg.bin`.  In addition to this, a `gbust.rpk` file is created for use with Mame and js99er.net.
 
 # Playing 
-To use the binaries with Classic99, load `gbust8.bin`, for Mame use `gbust.rpk`. For js99er.net, load either *both* `gbust8.bin` *and* `gbustg.bin`, or simply use the rpk file.
+To use the binaries with Classic99, load `gbustc.bin`, for Mame use `gbust.rpk`. For js99er.net, load either *both* `gbustc.bin` *and* `gbustg.bin`, or simply use the rpk file.
 If you want to play the game on real hardware, you will need to either burn the binaries to an Ubergrom style cart with 512kb of ROM and GROM emulation, or use a flash cart like the FinalGrom99 or the BackBit cartridge. Naming conventions and requirements might differ from flash cart to flash cart, so check your cart's documentation to know if you need to rename the files.
+Note that on flash carts, the game will likely show up as an empty menu item (option A. on page 1 on the FinalGrom99). This is expected behavior due to the way the game 'hacks' the TI's start-up procedure.
 
-Note that the game requires the 32kb memory expansion to be installed.
+Also note that the game requires the 32kb memory expansion to run.
 
 # Acknowledgements
 The libtivgm2.a music player was created by Tursi and the binary is distributed with his permission. The original can be found [here](https://github.com/tursilion/vgmcomp2)
-

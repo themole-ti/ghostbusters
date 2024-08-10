@@ -244,20 +244,23 @@ inline void blink_buildings()
 	}
 
 	// Is next building about to be attacked by stay puft and are we close
-	if ((staypuft_attacks[currentpuft].pk_level - game.pk) < MARSHMALLOW_SENSOR_TIME)
+	if (game.detector)
 	{
-		if (buildings[staypuft_attacks[currentpuft].building_id].haunted)
-			staypuft_attacks[currentpuft].pk_level += buildings[staypuft_attacks[currentpuft].building_id].haunted + 50;
-		else
+		if ((staypuft_attacks[currentpuft].pk_level - game.pk) < MARSHMALLOW_SENSOR_TIME)
 		{
-			int i = staypuft_attacks[currentpuft].building_id;
-			if (is_next_to_building(i))
-			{
-				colorize_building(i, BLDG_WHITE);
-			}
+			if (buildings[staypuft_attacks[currentpuft].building_id].haunted)
+				staypuft_attacks[currentpuft].pk_level += buildings[staypuft_attacks[currentpuft].building_id].haunted + 50;
 			else
 			{
-				colorize_building(i, BLDG_NORMAL);
+				int i = staypuft_attacks[currentpuft].building_id;
+				if (is_next_to_building(i))
+				{
+					colorize_building(i, BLDG_WHITE);
+				}
+				else
+				{
+					colorize_building(i, BLDG_NORMAL);
+				}
 			}
 		}
 	}

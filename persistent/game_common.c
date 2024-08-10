@@ -102,7 +102,7 @@ void do_scrolling_text(int nametable_offset)
 		else if (game.account < 999)
 			printstr(nametable_offset - 1, " CITY'S PK ENERGY: 0000   $   00", 32);
 		else
-			printstr(nametable_offset, " CITY'S PK ENERGY: 0000  $    00", 32);
+			printstr(nametable_offset - 1, " CITY'S PK ENERGY: 0000  $    00", 32);
 		printnum(nametable_offset + 19, game.pk);
 		printnum(nametable_offset + 26, game.account);
 		scroll_len--;
@@ -118,7 +118,7 @@ void haunt_buildings()
 		// Do we haunt a new building this tick?
 		if (haunt > HAUNTING_THRESHOLD)
 		{
-			int building_id = GHQ_ID;
+			int building_id = 0;
 
 			// Choose a building
 			building_id = rnd() & 0xf;

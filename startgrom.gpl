@@ -1,20 +1,30 @@
-* minimal GROM code to execute a short GPL startup program
+; minimal GROM cartridge loader
         grom >6000
         aorg >0000
 
-* cartridge Header
-        data >AA01      * flag + version
-        data >0000      * reserved
-        data strtuplst  * powerup list
-        data >0000      * program menu list
-        data >0000      * other lists we don't use
+; cartridge Header
+        data >AA01                                ; flag + version
+        data >0000                                ; reserved
+        data strtuplst                            ; powerup list
+        data prgrmlst                             ; program menu list
+        data >0000                                ; other lists we don't use
         data >0000
         data >0000
-        data >0000      * end of header 16 bytes
+        data >0000                                ; end of header 16 bytes
 
 strtuplst
-        data >0000
-        data boot
+        data >0000                                ; next startup item
+        data boot                                 ; address
+
+prgrmlst
+        data >0000                                ; link to next item
+        data run                                  ; address of program
+        data >0c10, >1112, >1314, >1516, >1718    ; name length (1st byte) + name
+        data >191a, >1b00
+
+run
+        clr  @>6000                               ; switch to bank 0
+        xml  >70                                  ; run asm vector defined at >6010
 
 boot
         back 15
@@ -33,12 +43,12 @@ boot
         st   >1f, V@>038a
         st   >1f, V@>038b
         st   >77, V@>0392
-        clr  @>6000     * switch to bank 0
+        clr  @>6002                               ; switch to bank 1 to hide ROM header
 
 done
-        dst   *>8372, *>8373       * Transfer address from data stack to sub stack
-        dect  @>8372               * Update pointer
-        rtn                        * This will branch to the next startup routine
+        dst   *>8372, *>8373                      ; Transfer address from data stack to sub stack
+        dect  @>8372                              ; Update pointer
+        rtn                                       ; This will branch to the next startup routine
 
 titlepatterns
         data >c180, >1c3f, >381c, >80c1

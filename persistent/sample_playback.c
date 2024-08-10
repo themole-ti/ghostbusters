@@ -90,11 +90,11 @@ void play_sample(unsigned int bank, unsigned int offset, unsigned int length)
 		"   li   r6, 0x2000		 \n"    // Not the last bank? Then we read the full 8192 samples from this one
 		"   jmp  loop 			 \n"
 		"done: 					 \n"
-		"	li r6, 0x9fbf		 \n"	// Done playing, mute all channels
+		"	li   r6, 0x9fbf		 \n"	// Done playing, mute all channels
 		"	movb r6, *r5		 \n"
 		"	swpb r6				 \n"
 		"	movb r6, *r5		 \n"
-		"	li r6, 0xdfff		 \n"
+		"	li   r6, 0xdfff		 \n"
 		"	movb r6, *r5		 \n"
 		"	swpb r6				 \n"
 		"	movb r6, *r5		 \n"

@@ -7,6 +7,7 @@
 #include "globals.h"
 #include "TISNPlay.h"
 #include "TISfxPlay.h"
+#include "utils.h"
 
 unsigned char gSaveIntCnt;	// console interrupt count byte
 

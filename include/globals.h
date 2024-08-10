@@ -111,8 +111,20 @@ extern staypuft_attack		staypuft_attacks[5];
 extern int  				currentpuft;
 extern int 					next_threshold;
 
-#define VSYNC_PLAY { vdpwaitvint(); { CALL_PLAYER_SFX; CALL_PLAYER_SN;} }
-#define END_SOUND  { MUTE_SOUND(); StopSong(); StopSfx(); }
+#define VSYNC_PLAY 															\
+{															 				\
+	vdpwaitvint(); 															\
+																			\
+	/* Play music */														\
+	{ 																		\
+		CALL_PLAYER_SFX; 													\
+		CALL_PLAYER_SN;														\
+	} 																		\
+																			\
+	/* Check for FCTN-= (QUIT) */											\
+	check_quit(); 															\
+}
+
 #define PRIO 	   (prio_counter++)
 
 #endif

@@ -28,15 +28,15 @@ SECTIONS
 	.persistent	: AT ( _persistent_src ) 
 	{ 
 		_persistent = . ; 
-		persistent/*.a:*(.text); 
-		persistent/*.o(.text); 
+		persistent/*.a:*(.text);
+		persistent/*.o(.text);
 		_persistent_end = . ;
 	} >lower_exp
 
 	.bank0 (LOADADDR(.persistent) + SIZEOF( .persistent )) : 
 	{ 
 		_text = . ; 
-		bank0/*.o(.text); 
+		bank0/*.o(.text);
 		_text_end = . ;
 	}
 
@@ -45,7 +45,7 @@ SECTIONS
 	.scratchpad	0x8342	: AT ( _text_end ) 
 	{ 
 		_scratchpad = . ; 
-		scratchpad/*.o(.text); 
+		scratchpad/*.o(.text);
 		_scratchpad_end = . ;
 	}
 

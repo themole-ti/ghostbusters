@@ -30,3 +30,16 @@ L5		mov 	r11, r6			* we're about to call the SongLoop routine, so we put our cal
 		bl 		@SongLoop		* Branch and Link to the SongLoop routine
 		mov 	r6, r11			* we're back from SongLoop, restore our caller's return address from r6 to r11
 		b 		@L6				* reset the music byte counter and continue copying
+
+	def check_quit
+check_quit
+		clr   	r1      		* keyboard column 20				
+		li    	r12,>24 		* CRU address of the decoder		
+		ldcr  	r1,>3   		* select the column					
+		li    	r12,>6  		* address of the first row 			
+		stcr  	r1,>8   		* read 8 rows						
+		andi  	r1,>1100		* test both "fctn" and "=" (=QUIT)	
+		jne   	noquit  		* not pressed						
+		blwp  	@>0000  		* reset 							
+noquit	b 		*r11
+

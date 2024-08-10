@@ -23,6 +23,7 @@ MD5_OLD=("$(cat $MAPFILE.md5 2>/dev/null)")
 if [ "$MD5" == "$MD5_OLD" ]; then
 	if [ -f $OUTFILE ]; then
 		# Resources unchanged, no need to rebuild
+		echo "         (cached)"
 		exit;
 	fi
 fi

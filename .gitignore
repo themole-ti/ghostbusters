@@ -21,7 +21,7 @@ github_token.txt
 
 # Libraries
 *.lib
-*.a
+# *.a
 *.la
 *.lo
 
