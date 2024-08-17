@@ -2,6 +2,7 @@
 #define GAME_COMMON_H
 
 extern char* battery_msg;
+extern char* bait_msg;
 extern char* men_msg;
 extern char* traps_msg;
 extern char* status_msg;

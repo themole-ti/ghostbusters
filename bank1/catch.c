@@ -57,8 +57,7 @@ typedef struct
 man 	men[2];
 enemy 	ghost;
 int   	trap_x, trap_y;
-int     catch_xv, catch_yv;
-int     catch_x, catch_y;
+int     catch_x, catch_y, catch_yv;
 int     ghost_caught = FALSE;
 int     left_man = -1, right_man = -1;
 int 	counter = START_COUNTER;
@@ -67,6 +66,9 @@ int 	tempx, tempy;
 int 	sample_played = 0;
 
 int ghost_col1, ghost_col2;
+
+#define CATCH_YV_UP 	-3
+#define CATCH_YV_DOWN 	 2
 
 void load_background(int building_id)
 {
@@ -888,7 +890,7 @@ void _do_catch_screen(int building_id)
 							men[1].state = STATE_CATCHING;
 							catch_x = trap_x;
 							catch_y = trap_y - trap_y_offset;
-							catch_yv = -3;
+							catch_yv = CATCH_YV_UP;
 						}
 					}
 
@@ -947,7 +949,7 @@ void _do_catch_screen(int building_id)
 						men[1].state = STATE_CATCHING;
 						catch_x = trap_x;
 						catch_y = trap_y - trap_y_offset;
-						catch_yv = -3;
+						catch_yv = CATCH_YV_UP;
 						StopSfx();
 						StartSfx(levelfx, SOUND_TRAP, 1);
 					}
@@ -976,7 +978,7 @@ void _do_catch_screen(int building_id)
 				catch_y = catch_y + catch_yv;
 
 				if (catch_y < 20)
-					catch_yv = -catch_yv;
+					catch_yv = CATCH_YV_DOWN;	// slower on the way down!
 
 				if (catch_y > (trap_y - trap_y_offset))
 				{

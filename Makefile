@@ -9,7 +9,7 @@ CC=$(BASE_PATH)tms9900/bin/tms9900-gcc
 XGA=$(BASE_PATH)xdt99/xga99.py
 
 # includes and libraries
-INCLUDE_PATH=../include
+INCLUDE_PATH=../include				# The path to libti99 header files
 LIB_PATH=persistent
 LIBRARIES=																							\
 	-ltivgm2																							\

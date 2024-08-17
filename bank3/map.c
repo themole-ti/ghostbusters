@@ -171,7 +171,7 @@ void lay_dot(int x, int y, int pattern)
 	int addr = 0x1800 + ((y + 1) * 32) + (x + 1);
 
 	// TODO: find a quicker (non-vdpgetch) way to check if we need to lay down a dot...
-	// if (vdpgetch(addr) != bait_patt)
+	if (vdpgetch(addr) != bait_patt)
 		vdpchar(addr, pattern);
 }
 
@@ -494,9 +494,14 @@ int check_staypuft(int bait)
 			else
 				lay_dot(player.x, player.y - 12, bait_patt);
 		}
-		bait_layed = 1;
+		bait_layed = 120;
+		StartSfx(levelfx, SOUND_BLIP, 1);
 	}
-
+	if (bait && (game.bait == 0) && (bait_layed == 0))
+	{
+		StartSfx(levelfx, SOUND_BRRR, 1);
+		scroll_status_text(0x1800 + 704, (char*)bait_msg, strlength((unsigned char*)bait_msg));
+	}
 
 	switch(state)
 	{
@@ -958,8 +963,8 @@ int _do_map_screen()
 		else
 			game.roamer_tick = game.frames_per_roamer_tick;
 
-		if (key != 'B')
-			bait_layed = 0;
+		if ((key != 'B') && bait_layed)
+			bait_layed--;
 
 		// Render roamers
 		for (int i = 0; i < 4; i++)

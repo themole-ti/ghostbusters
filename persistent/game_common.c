@@ -6,6 +6,7 @@
 #include "trampolines.h"
 
 char* battery_msg = "PROTON PACK BATTERIES EMPTY. GO TO GHQ...                                ";
+char* bait_msg    = "-NO MARSHMALLOW MAN BAIT!!!-                                             ";
 char* men_msg     = "NOT ENOUGH MEN, GO TO GHQ...                                             ";
 char* traps_msg   = "NO EMPTY TRAPS, GO TO GHQ...                                             ";
 char* status_msg  = "BACKPACK POWER AT XX% OF MAXIMUM... X EMPTY TRAPS... X MEN LEFT...                                    ";

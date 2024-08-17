@@ -277,6 +277,7 @@ void init_staypuft_attacks()
 		staypuft_attacks[i].building_id = building_id;
 		selected[building_id] = 1;
 	}
+	staypuft_attacks[4].pk_level += 750;
 
 #if DEBUG_VALUES
 	staypuft_attacks[0].building_id = 4;
