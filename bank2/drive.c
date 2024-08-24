@@ -615,7 +615,7 @@ void drive_loop()
 	// StartSong(levelsongs, 0);
 
 	// Put 5 transparent sprites at bottom of the screen
-	#define SCANLINE 173
+	#define SCANLINE 172
 	put_4x4_sprite_offset_fast(1, 0x00, 0, SCANLINE);
 	put_4x4_sprite_offset_fast(1, 0x00, 0, SCANLINE);
 	put_4x4_sprite_offset_fast(1, 0x00, 0, SCANLINE);
@@ -741,7 +741,7 @@ void drive_loop()
 		// wait for vsync
 		// Play music and SFX
 		VSYNC_PLAY;
-		vdpchar(SAL * 0x80, 173);				// Re-position the first (hidden) sprite back at line 173
+		vdpchar(SAL * 0x80, SCANLINE);			// Re-position the first (hidden) sprite back at line 'SCANLINE'
 
 		// Loop at end of song
 		if (!isSNPlaying) 

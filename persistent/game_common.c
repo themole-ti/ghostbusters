@@ -13,7 +13,7 @@ char* status_msg  = "BACKPACK POWER AT XX% OF MAXIMUM... X EMPTY TRAPS... X MEN 
 char* crossed_msg = "YOU CROSSED THE STREAMS. LUCKILY YOUR BATTERIES SHORTED OUT IN TIME, GO BACK TO GHQ TO RECHARGE...                                   ";
 char* puftwarning = "-MARSHMALLOW ATTACK!-                                ";
 char* puftpenalty = "MARSHMALLOW MAN DID $4000 WORTH OF DAMAGE. THAT AMOUNT WILL BE DEDUCTED FROM YOUR ACCOUNT.                                 ";
-char* puftaward   = "THE MAYER HAS AWARDED YOU $2000 FOR AVERTING A MARSHMALLOW MAN CATASTROPHY!                                ";
+char* puftaward   = "THE MAYOR HAS AWARDED YOU $2000 FOR AVERTING A MARSHMALLOW MAN CATASTROPHY!                                ";
 char* gotozuul    = "GO TO ZUUL! SNEAK PAST THE MARSHMALLOW MAN AND CLOSE THE PORTAL!                                ";
 
 progression progression_table[10] = 
